@@ -27,7 +27,7 @@ func newGasGraphRoutes(handler *gin.RouterGroup, g usecase.GasGraph, l logging.C
 // @ID          get-graph
 // @Accept      json
 // @Produce     json
-// @Success     200 {object} entity.GasResult
+// @Success     200 {object} entity.GasGraphResult
 // @Failure     500 {object} response
 // @Router      /graph [get].
 func (g *gasGraphRoutes) getGraph(c *gin.Context) {

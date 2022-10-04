@@ -30,7 +30,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/entity.GasResult"
+                            "$ref": "#/definitions/entity.GasGraphResult"
                         }
                     },
                     "500": {
@@ -56,32 +56,7 @@ const docTemplate = `{
                 }
             }
         },
-        "entity.GasHourFreqResult": {
-            "type": "object",
-            "properties": {
-                "hour": {
-                    "type": "integer",
-                    "maximum": 24,
-                    "minimum": 0
-                },
-                "value": {
-                    "type": "number"
-                }
-            }
-        },
-        "entity.GasMonthAmountResult": {
-            "type": "object",
-            "properties": {
-                "amount": {
-                    "type": "number"
-                },
-                "date": {
-                    "type": "string",
-                    "example": "22-01-01 00:00"
-                }
-            }
-        },
-        "entity.GasResult": {
+        "entity.GasGraphResult": {
             "type": "object",
             "properties": {
                 "gasHourFreq": {
@@ -104,6 +79,31 @@ const docTemplate = `{
                 },
                 "gasSpentTotal": {
                     "type": "number"
+                }
+            }
+        },
+        "entity.GasHourFreqResult": {
+            "type": "object",
+            "properties": {
+                "hour": {
+                    "type": "integer",
+                    "maximum": 24,
+                    "minimum": 0
+                },
+                "value": {
+                    "type": "number"
+                }
+            }
+        },
+        "entity.GasMonthAmountResult": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "date": {
+                    "type": "string",
+                    "example": "22-01-01 00:00"
                 }
             }
         },
