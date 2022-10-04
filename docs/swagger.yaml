@@ -8,6 +8,23 @@ definitions:
         example: 22-01-01 00:00
         type: string
     type: object
+  entity.GasGraphResult:
+    properties:
+      gasHourFreq:
+        items:
+          $ref: '#/definitions/entity.GasHourFreqResult'
+        type: array
+      gasPerDayAverage:
+        items:
+          $ref: '#/definitions/entity.GasDayAverageResult'
+        type: array
+      gasPerMonthAmount:
+        items:
+          $ref: '#/definitions/entity.GasMonthAmountResult'
+        type: array
+      gasSpentTotal:
+        type: number
+    type: object
   entity.GasHourFreqResult:
     properties:
       hour:
@@ -24,23 +41,6 @@ definitions:
       date:
         example: 22-01-01 00:00
         type: string
-    type: object
-  entity.GasResult:
-    properties:
-      gasHourFreq:
-        items:
-          $ref: '#/definitions/entity.GasHourFreqResult'
-        type: array
-      gasPerDayAverage:
-        items:
-          $ref: '#/definitions/entity.GasDayAverageResult'
-        type: array
-      gasPerMonthAmount:
-        items:
-          $ref: '#/definitions/entity.GasMonthAmountResult'
-        type: array
-      gasSpentTotal:
-        type: number
     type: object
   v1.response:
     properties:
@@ -64,7 +64,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/entity.GasResult'
+            $ref: '#/definitions/entity.GasGraphResult'
         "500":
           description: Internal Server Error
           schema:

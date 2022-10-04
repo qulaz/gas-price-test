@@ -20,15 +20,17 @@ import (
 // Swagger spec:
 // @title       Gas Price Test Task
 // @version     1.0
-// @BasePath    /v1.
+// @BasePath    /v1
 func NewRouter(handler *gin.Engine, cfg *config.Config, l logging.ContextLogger, t usecase.GasGraph) {
 	handler.Use(cors.Default())
 	handler.Use(logging.GinLogging(l))
 	handler.Use(gin.Recovery())
 
 	if cfg.API != nil {
+		fmt.Println(cfg.API.Domain)
 		if cfg.API.Domain != "" {
-			docs.SwaggerInfo.Host = cfg.API.Host
+			docs.SwaggerInfo.Host = cfg.API.Domain
+			docs.SwaggerInfo.Schemes = []string{"https"}
 		} else {
 			docs.SwaggerInfo.Host = fmt.Sprintf("localhost:%s", cfg.API.Port)
 		}
