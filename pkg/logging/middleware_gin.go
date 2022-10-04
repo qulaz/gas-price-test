@@ -12,7 +12,7 @@ func GinLogging(logger ContextLogger) gin.HandlerFunc {
 
 		c.Next()
 
-		logger = logger.With(
+		log := logger.With(
 			"method", c.Request.Method,
 			"path", c.Request.RequestURI,
 			"status", c.Writer.Status(),
@@ -21,9 +21,9 @@ func GinLogging(logger ContextLogger) gin.HandlerFunc {
 		)
 
 		if c.Writer.Status() >= 500 {
-			logger.Errorw("⚠️ Error", "err", c.Errors.String())
+			log.Errorw("⚠️ Error", "err", c.Errors.String())
 		} else {
-			logger.Infow("✅ Served")
+			log.Infow("✅ Served")
 		}
 	}
 }
