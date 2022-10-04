@@ -29,7 +29,6 @@ linters:
     - gochecknoinits
     - goconst
     - gocritic
-    - godot
     - gofumpt
     - goheader
     - goprintffuncname
